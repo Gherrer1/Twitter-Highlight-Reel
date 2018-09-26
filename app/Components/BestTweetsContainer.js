@@ -6,6 +6,7 @@ import { getQueryUsername, isNewerThanXDays } from '../helpers';
 import BestTweetsList from './BestTweetsList';
 import Nav from './Nav';
 import fetchTweets from '../api';
+import { MAX_NUM_TWEETS_TO_FETCH } from '../constants';
 
 class BestTweetsContainer extends React.Component {
 	constructor(props) {
@@ -50,8 +51,8 @@ class BestTweetsContainer extends React.Component {
 		this.setState({
 			maxAge: value,
 		}, () => {
-			const { oldestTweet, maxAge } = this.state;
-			if (isNewerThanXDays(oldestTweet, maxAge)) {
+			const { oldestTweet, maxAge, tweets } = this.state;
+			if (isNewerThanXDays(oldestTweet, maxAge) && tweets.length < MAX_NUM_TWEETS_TO_FETCH) {
 				console.log('we need more tweets');
 				this.fetchMoreTweets();
 			}

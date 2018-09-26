@@ -8,6 +8,7 @@ const options = [
 	{ value: 7, label: 'Last week' },
 	{ value: 14, label: 'Last 14 days' },
 	{ value: 30, label: 'Last month' },
+	{ value: 60, label: 'Last 60 days' },
 ];
 
 function Nav(props) {

@@ -1,4 +1,5 @@
 import { isNewerThanXDays, popularity } from './helpers';
+import { MAX_NUM_TWEETS_TO_FETCH } from './constants';
 
 export default function fetchTweets({
 	username, maxAge, alreadyFetched = [], oldestTweet = null, cb,
@@ -18,7 +19,12 @@ export default function fetchTweets({
 				? fetched[fetched.length - 1]
 				: null;
 			const doneFetching = json.length === 0
-				|| fetched.length >= 1000 || !isNewerThanXDays(newOldestTweet, maxAge);
+				|| fetched.length >= MAX_NUM_TWEETS_TO_FETCH || !isNewerThanXDays(newOldestTweet, maxAge);
+			const maxTweetsFetched = fetched.length >= MAX_NUM_TWEETS_TO_FETCH
+				&& isNewerThanXDays(newOldestTweet, maxAge);
+			if (maxTweetsFetched) {
+				console.log('max tweets fetched');
+			}
 
 			if (doneFetching) {
 				return cb({
