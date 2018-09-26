@@ -1,0 +1,6 @@
+node_modules/
+dist/
+firebase-debug.log
+apiCreds.js
+.DS_Store
+notes.txt
