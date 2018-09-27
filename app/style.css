@@ -67,13 +67,20 @@ nav {
 }
 
 .tweets-list {
+    width: 700px;
+    margin: 10px auto;
     padding-left: 0;
     list-style-type: none;
+}
+.tweet-meta {
+    text-align: center;
+    padding: 5px;
 }
 .tweet {
     padding: 10px;
     background: #fff;
     border-bottom: 1px solid grey;
+    border-radius: 2px;
 }
 .avatar {
     height: 40px;

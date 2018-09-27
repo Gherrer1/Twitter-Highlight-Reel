@@ -1,7 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import differenceInDays from 'date-fns/difference_in_days';
-import { isNewerThanXDays } from '../helpers';
 
 function Tweet(props) {
 	const { tweet } = props;
@@ -12,9 +10,6 @@ function Tweet(props) {
 				<img src={tweet.user.profile_image_url} alt={`${tweet.user.name}`} className="avatar" />
 			</div>
 			<div className="evr-else">
-				{/* <span>{tweet.user.name}</span> */}
-				{/* <span> @{tweet.user.screen_name}</span> */}
-				{/* <span> {tweet.created_at}</span> */}
 				<h3>
 					<a
 						href={`https://twitter.com/i/web/status/${tweet.id_str}`}
@@ -37,11 +32,10 @@ Tweet.propTypes = {
 };
 
 function BestTweetsList(props) {
-	const { tweets, oldestTweet, username } = props;
+	const { tweets, username } = props;
 	return (
 		<ul className="tweets-list">
-			Showing {tweets.length} tweets for {username}.
-			{/* {tweets.length > 0 && `Oldest tweet is ${differenceInDays(new Date(), new Date(oldestTweet.created_at))} old.`} */}
+			<div className="tweet-meta">Showing {tweets.length} tweets for {username}.</div>
 			{tweets.map(tweet => (
 				<li key={tweet.id}>
 					<Tweet tweet={tweet} />
@@ -52,10 +46,7 @@ function BestTweetsList(props) {
 }
 BestTweetsList.propTypes = {
 	tweets: PropTypes.array.isRequired,
-	oldestTweet: PropTypes.object,
-};
-BestTweetsList.defaultProps = {
-	oldestTweet: null,
+	username: PropTypes.string.isRequired,
 };
 
 export default BestTweetsList;
