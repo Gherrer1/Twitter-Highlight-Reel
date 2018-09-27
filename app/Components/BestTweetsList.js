@@ -36,7 +36,7 @@ function BestTweetsList(props) {
 	const { tweets, username } = props;
 	return (
 		<ul className="tweets-list">
-			<div className="tweet-meta">Showing {tweets.length} tweets for {username}.</div>
+			<div className="tweet-meta">Showing {tweets.length} tweets for {username}</div>
 			{tweets.map(tweet => (
 				<li key={tweet.id}>
 					<Tweet tweet={tweet} />
