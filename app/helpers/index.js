@@ -1,5 +1,5 @@
 import queryString from 'query-string';
-import { subDays, isBefore } from 'date-fns';
+import { subDays, isBefore, format } from 'date-fns';
 
 export function getQueryUsername(query) {
 	const parsedQuery = queryString.parse(query);
@@ -17,4 +17,8 @@ export function isNewerThanXDays(tweet, daysAgo = 7) {
 	const xDaysAgo = subDays(new Date(), daysAgo);
 	const tweetCreatedOn = new Date(tweet.created_at);
 	return isBefore(xDaysAgo, tweetCreatedOn);
+}
+
+export function prettyDate(date) {
+	return format(date, 'MMMM Do, YYYY h:mm a');
 }

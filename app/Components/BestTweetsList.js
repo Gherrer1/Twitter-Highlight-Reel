@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { prettyDate } from '../helpers';
 
 function Tweet(props) {
 	const { tweet } = props;
@@ -22,7 +23,7 @@ function Tweet(props) {
 				</h3>
 				<span>Likes: {tweet.favorite_count}, Retweets: {tweet.retweet_count}</span>
 				<br />
-				<span>Created at {tweet.created_at}</span>
+				<span>On {prettyDate(tweet.created_at)}</span>
 			</div>
 		</div>
 	);
