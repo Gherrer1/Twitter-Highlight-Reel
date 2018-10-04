@@ -18,7 +18,7 @@ function Tweet(props) {
 						className="tweet-link"
 						rel="noopener noreferrer"
 					>
-						{tweet.text}
+						{tweet.full_text}
 					</a>
 				</h3>
 				<span>Likes: {tweet.favorite_count}, Retweets: {tweet.retweet_count}</span>
