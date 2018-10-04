@@ -2,25 +2,11 @@ import React, { Fragment } from 'react';
 import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Loader from 'react-loader-spinner';
-import Modal from 'react-modal';
 import { getQueryUsername, isNewerThanXDays } from '../helpers';
 import BestTweetsList from './BestTweetsList';
 import Nav from './Nav';
 import fetchTweets from '../api';
 import { MAX_NUM_TWEETS_TO_FETCH } from '../constants';
-
-const customStyles = {
-	content: {
-		top: '50%',
-		left: '50%',
-		right: 'auto',
-		bottom: 'auto',
-		marginRight: '-50%',
-		transform: 'translate(-50%, -50%)',
-	},
-};
-
-Modal.setAppElement('#app');
 
 class BestTweetsContainer extends React.Component {
 	constructor(props) {
@@ -33,7 +19,6 @@ class BestTweetsContainer extends React.Component {
 			maxAge: 7,
 			error: null,
 			loading: true,
-			modalIsOpen: false,
 		};
 
 		this.fetchTweets = this.fetchTweets.bind(this);
@@ -41,8 +26,6 @@ class BestTweetsContainer extends React.Component {
 		this.changeDayFilter = this.changeDayFilter.bind(this);
 		this.usernameProp = this.usernameProp.bind(this);
 		this.handleFetchResponse = this.handleFetchResponse.bind(this);
-		this.openModal = this.openModal.bind(this);
-		this.closeModal = this.closeModal.bind(this);
 	}
 
 	componentDidMount() {
@@ -129,21 +112,9 @@ class BestTweetsContainer extends React.Component {
 		});
 	}
 
-	openModal() {
-		this.setState({
-			modalIsOpen: true,
-		});
-	}
-
-	closeModal() {
-		this.setState({
-			modalIsOpen: false,
-		});
-	}
-
 	render() {
 		const { error, tweets, oldestTweet, filteredSortedTweets,
-			maxAge, loading, modalIsOpen } = this.state;
+			maxAge, loading } = this.state;
 		const { history } = this.props;
 		if (loading) {
 			return (
@@ -177,14 +148,6 @@ class BestTweetsContainer extends React.Component {
 						oldestTweet={oldestTweet}
 						username={this.usernameProp()}
 					/>
-					<Modal
-						isOpen={modalIsOpen}
-						onRequestClose={this.closeModal}
-						style={customStyles}
-					>
-						<div>Yo</div>
-						<button type="button" onClick={this.closeModal}>close</button>
-					</Modal>
 				</Fragment>
 			);
 		}
