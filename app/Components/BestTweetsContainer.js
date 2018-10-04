@@ -142,7 +142,6 @@ class BestTweetsContainer extends React.Component {
 						selectChanged={this.changeDayFilter}
 						{...{ history, loading, maxAge }}
 					/>
-					<button onClick={this.openModal} type="button">Open Modal</button>
 					<BestTweetsList
 						tweets={tweetsForTimeWindow}
 						oldestTweet={oldestTweet}

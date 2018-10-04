@@ -2,11 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { prettyDate } from '../helpers';
 
-function Tweet(props) {
-	const { tweet } = props;
-	// console.log(tweet);
+function Tweet({ tweet, tweetRank }) {
 	return (
 		<div className="tweet">
+			<div style={{ marginBottom: '5px' }}>#{tweetRank}</div>
 			<div className="avi-col">
 				<img src={tweet.user.profile_image_url} alt={`${tweet.user.name}`} className="avatar" />
 			</div>
@@ -30,19 +29,22 @@ function Tweet(props) {
 }
 Tweet.propTypes = {
 	tweet: PropTypes.object.isRequired,
+	tweetRank: PropTypes.number.isRequired,
 };
 
 function BestTweetsList(props) {
 	const { tweets, username } = props;
 	return (
-		<ul className="tweets-list">
-			<div className="tweet-meta">Showing {tweets.length} tweets for {username}</div>
-			{tweets.map(tweet => (
-				<li key={tweet.id}>
-					<Tweet tweet={tweet} />
-				</li>
-			))}
-		</ul>
+		<div>
+			<div className="tweet-meta">Showing {tweets.length} tweets for @{username}</div>
+			<ul className="tweets-list">
+				{tweets.map((tweet, tweetIndex) => (
+					<li key={tweet.id}>
+						<Tweet tweet={tweet} tweetRank={tweetIndex + 1} />
+					</li>
+				))}
+			</ul>
+		</div>
 	);
 }
 BestTweetsList.propTypes = {

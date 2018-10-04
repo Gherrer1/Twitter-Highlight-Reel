@@ -67,13 +67,16 @@ nav {
 }
 
 .tweets-list {
-    max-width: 700px;
-    margin: 10px auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    margin: 10px 10px;
     padding-left: 0;
     list-style-type: none;
 }
 .tweet-meta {
     text-align: center;
+    margin-top: 10px;
 }
 .tweet {
     padding: 15px;
