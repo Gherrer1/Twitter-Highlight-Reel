@@ -66,6 +66,7 @@ module.exports.hello = (event, context, callback) => {
 	const params = {
 		screen_name: username,
 		count: 200,
+		tweet_mode: 'extended',
 	};
 	if (query && query.max_id) {
 		params.max_id = query.max_id;
