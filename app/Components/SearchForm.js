@@ -35,10 +35,9 @@ class SearchForm extends React.Component {
 		const { username } = this.state;
 		const { big } = this.props;
 		const className = big ? 'search-form-big' : 'search-form-lil';
-		const placeholder = 'e.g. @tylermcginnis';
 		return (
 			<form onSubmit={this.handleSubmit} className={className}>
-				<input type="text" value={username} onChange={this.handleChange} placeholder={placeholder} />
+				<input type="text" value={username} onChange={this.handleChange} placeholder={'@elonmusk'} />
 				<button type="submit" disabled={username === ''}>Get Tweets</button>
 			</form>
 		);

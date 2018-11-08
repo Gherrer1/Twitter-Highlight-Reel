@@ -18,14 +18,26 @@ body {
     font-size: 32px;
     margin-bottom: 10px;
     padding: 6px;
+    border: 1px solid #C6E7FB;
+    outline-color: #4AB3F4;
+    text-align: center;
 }
+
+.search-form-big input::placeholder {
+    color: rgb(151, 151, 151);
+}
+
+.search-form-big input:focus::placeholder {
+    color: transparent;
+}
+
 .search-form-big button {
     cursor: pointer;
     width: 200px;
     height: 30px;
     font-size: 17px;
     color: white;
-    background-color: black;
+    background-color: #4AB3F4;
     border: none;
     border-radius: 2px;
 }
