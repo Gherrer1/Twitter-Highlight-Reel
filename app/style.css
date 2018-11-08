@@ -30,6 +30,11 @@ body {
     border-radius: 2px;
 }
 
+.search-form-big button:disabled {
+    opacity: 0.5;
+    cursor: default;
+}
+
 .search-form-lil {
     display: inline;
     margin-left: 10px;

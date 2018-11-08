@@ -39,7 +39,7 @@ class SearchForm extends React.Component {
 		return (
 			<form onSubmit={this.handleSubmit} className={className}>
 				<input type="text" value={username} onChange={this.handleChange} placeholder={placeholder} />
-				<button type="submit">Get Tweets</button>
+				<button type="submit" disabled={username === ''}>Get Tweets</button>
 			</form>
 		);
 	}
