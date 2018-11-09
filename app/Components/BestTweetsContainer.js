@@ -119,10 +119,7 @@ class BestTweetsContainer extends React.Component {
 		if (loading) {
 			return (
 				<div>
-					<Nav
-						selectChanged={this.changeDayFilter}
-						{...{ history, loading, maxAge }}
-					/>
+					<Nav history={history} />
 					<div className="loader">
 						<Loader type="Triangle" color="#00BFFF" height="100" width="100" />
 					</div>
@@ -138,14 +135,14 @@ class BestTweetsContainer extends React.Component {
 				.slice(0, 25);
 			return (
 				<Fragment>
-					<Nav
-						selectChanged={this.changeDayFilter}
-						{...{ history, loading, maxAge }}
-					/>
+					<Nav history={history} />
 					<BestTweetsList
 						tweets={tweetsForTimeWindow}
 						oldestTweet={oldestTweet}
 						username={this.usernameProp()}
+						maxAge={maxAge}
+						selectChanged={this.changeDayFilter}
+						loading={loading}
 					/>
 				</Fragment>
 			);
@@ -153,10 +150,7 @@ class BestTweetsContainer extends React.Component {
 		if (error) {
 			return (
 				<div>
-					<Nav
-						selectChanged={this.changeDayFilter}
-						{...{ history, loading, maxAge }}
-					/>
+					<Nav history={history} />
 					{error}
 				</div>
 			);
@@ -164,10 +158,7 @@ class BestTweetsContainer extends React.Component {
 
 		return (
 			<div>
-				<Nav
-					selectChanged={this.changeDayFilter}
-					{...{ history, loading, maxAge }}
-				/>
+				<Nav history={history} />
 				Something went wrong :(
 			</div>
 		);

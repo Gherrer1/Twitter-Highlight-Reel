@@ -1,6 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Select from 'react-select';
 import { prettyDate } from '../helpers';
+
+const options = [
+	{ value: 7, label: 'Last week' },
+	{ value: 14, label: 'Last 14 days' },
+	{ value: 30, label: 'Last month' },
+	{ value: 60, label: 'Last 60 days' },
+];
+
+const customStyles = {
+	control: styles => ({ ...styles, backgroundColor: '#4AB3F4' }),
+	singleValue: () => ({ color: 'white', fontSize: '20px' }),
+	indicatorSeparator: () => ({ backgroundColor: 'black' }),
+};
 
 function Tweet({ tweet, tweetRank }) {
 	return (
@@ -33,10 +47,21 @@ Tweet.propTypes = {
 };
 
 function BestTweetsList(props) {
-	const { tweets, username } = props;
+	const { tweets, username, maxAge, selectChanged, loading } = props;
 	return (
 		<div>
-			<div className="tweet-meta">Showing {tweets.length} tweets for @{username}</div>
+			<div className="tweet-meta">
+				Showing {tweets.length} tweets for @{username} from the
+				<span className="select-days">
+					<Select
+						value={options.find(o => o.value === maxAge)}
+						onChange={selectChanged}
+						options={options}
+						isDisabled={loading}
+						styles={customStyles}
+					/>
+				</span>
+			</div>
 			<ul className="tweets-list">
 				{tweets.map((tweet, tweetIndex) => (
 					<li key={tweet.id}>
@@ -50,6 +75,9 @@ function BestTweetsList(props) {
 BestTweetsList.propTypes = {
 	tweets: PropTypes.array.isRequired,
 	username: PropTypes.string.isRequired,
+	maxAge: PropTypes.number.isRequired,
+	selectChanged: PropTypes.func.isRequired,
+	loading: PropTypes.bool.isRequired,
 };
 
 export default BestTweetsList;
