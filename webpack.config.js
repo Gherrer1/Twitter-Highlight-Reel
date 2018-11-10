@@ -1,5 +1,5 @@
 /* eslint-disable */
-
+// TODO: optimize bundle so app can work on iphone 4 - otherwise its too big atm
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 

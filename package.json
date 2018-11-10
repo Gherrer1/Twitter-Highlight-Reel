@@ -6,7 +6,7 @@
   "scripts": {
     "start": "webpack-dev-server --open",
     "deploy": "webpack -p && firebase deploy",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "webpack -p"
   },
   "repository": {
     "type": "git",
@@ -29,7 +29,7 @@
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-react": "^7.11.1",
-    "firebase-tools": "^4.2.1",
+    "firebase-tools": "^6.0.1",
     "html-webpack-plugin": "^3.2.0",
     "serverless": "^1.32.0",
     "style-loader": "^0.23.0",
