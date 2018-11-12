@@ -78,9 +78,11 @@ nav {
     margin-top: 100px;
 }
 
-.select-days {
-    /* width: 150px; */
+.select-days-big {
     margin-left: 10px;
+}
+.select-days-lil {
+    display: none;
 }
 
 .tweets-list {
@@ -139,6 +141,14 @@ nav {
 }
 
 @media screen and (max-width: 500px) {
+    .select-days-big {
+        display: none;
+    }
+    .select-days-lil {
+        display: block;
+        width: 200px;
+        margin: 5px auto;
+    }
     .tweets-list {
         grid-template-columns: repeat(1, 1fr);
     }

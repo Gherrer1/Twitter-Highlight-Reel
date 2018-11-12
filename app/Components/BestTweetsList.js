@@ -52,7 +52,7 @@ function BestTweetsList(props) {
 		<div>
 			<div className="tweet-meta">
 				Showing {tweets.length} tweets for @{username} from the
-				<span className="select-days">
+				<span className="select-days-big">
 					<Select
 						value={options.find(o => o.value === maxAge)}
 						onChange={selectChanged}
@@ -61,6 +61,15 @@ function BestTweetsList(props) {
 						styles={customStyles}
 					/>
 				</span>
+			</div>
+			<div className="select-days-lil">
+				<Select
+					value={options.find(o => o.value === maxAge)}
+					onChange={selectChanged}
+					options={options}
+					isDisabled={loading}
+					styles={customStyles}
+				/>
 			</div>
 			<ul className="tweets-list">
 				{tweets.map((tweet, tweetIndex) => (
