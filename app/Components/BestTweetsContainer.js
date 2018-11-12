@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Loader from 'react-loader-spinner';
-import { getQueryUsername, isNewerThanXDays } from '../helpers';
+import { getQueryUsername, isNewerThanXDays, unescapeTweet } from '../helpers';
 import BestTweetsList from './BestTweetsList';
 import Nav from './Nav';
 import fetchTweets from '../api';
@@ -132,7 +132,8 @@ class BestTweetsContainer extends React.Component {
 		if (tweets) {
 			const tweetsForTimeWindow = filteredSortedTweets
 				.filter(t => isNewerThanXDays(t, maxAge))
-				.slice(0, 25);
+				.slice(0, 25)
+				.map(tweet => unescapeTweet(tweet));
 			return (
 				<Fragment>
 					<Nav history={history} />

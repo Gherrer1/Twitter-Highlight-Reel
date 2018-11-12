@@ -22,3 +22,10 @@ export function isNewerThanXDays(tweet, daysAgo = 7) {
 export function prettyDate(date) {
 	return format(date, 'MMMM Do, YYYY h:mm a');
 }
+
+export function unescapeTweet(tweet) {
+	return {
+		...tweet,
+		full_text: tweet.full_text.replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>'),
+	};
+}
