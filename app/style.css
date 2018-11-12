@@ -65,12 +65,15 @@ nav {
     box-shadow: 0 0.1125rem 1rem 0 rgba(0,0,0,0.24);
 }
 .home-btn {
-    font-size: 16px;
+    font-size: 18px;
     color: black;
     text-decoration: none;
+    border: 1px solid black;
+    padding: 4px;
+    border-radius: 3px;
 }
 .home-btn:hover {
-    text-decoration: underline;
+    background-color: white;
 }
 
 .loader {
