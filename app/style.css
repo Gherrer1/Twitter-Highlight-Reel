@@ -111,6 +111,7 @@ nav {
 }
 .evr-else span {
     font-size: 13px;
+    color: rgb(53, 52, 52);
 }
 .avatar {
     height: 40px;
@@ -134,5 +135,11 @@ nav {
         margin: 10px 10px;
         padding-left: 0;
         list-style-type: none;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .tweets-list {
+        grid-template-columns: repeat(1, 1fr);
     }
 }
